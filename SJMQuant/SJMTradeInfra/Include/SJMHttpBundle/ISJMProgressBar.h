@@ -4,9 +4,10 @@
 class ISJMProgressBar
 {
 public:
-	virtual void clear();
-	virtual void update();
-	virtual void setMessage(const QString &message);
-	virtual void setStatus(qint64 value, qint64 maximum);
+	virtual void clear() = 0;
+	virtual void update() = 0;
+	virtual void setMessage(const QString &message) = 0;
+	virtual void setStatus(qint64 value, qint64 maximum) = 0;
 	virtual ~ISJMProgressBar() = default;
 };
+

@@ -11,6 +11,11 @@ progressBar(progress_bar)
 {
 }
 
+bool SJMDownloadManager::doesFileExist(const QString& fileURL)
+{
+	return false;
+}
+
 QString SJMDownloadManager::getSaveFileName(const QString& url) const
 {
 	QString basename = QFileInfo(url).fileName();
@@ -110,7 +115,6 @@ void SJMDownloadManager::startNextDownload()
 	}
 
 	QUrl url = downloadQueue.dequeue();
-
 	downloadFile(url);
 }
 

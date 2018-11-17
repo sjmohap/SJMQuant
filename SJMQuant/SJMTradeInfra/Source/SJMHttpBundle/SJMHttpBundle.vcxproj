@@ -142,6 +142,7 @@
     <ClInclude Include="..\..\Include\SJMHttpBundle\ISJMProgressBar.h" />
     <ClInclude Include="..\..\Include\SJMHttpBundle\ISJMResponseContentHandler.h" />
     <ClInclude Include="..\..\Include\SJMHttpBundle\ISJMResponseHandler.h" />
+    <ClInclude Include="..\..\Include\SJMHttpBundle\SJMCommandlineTextProgressBar.h" />
     <ClInclude Include="..\..\Include\SJMHttpBundle\SJMDownloadManager.h" />
     <ClInclude Include="..\..\Include\SJMHttpBundle\SJMHttpBundleCommonDef.h" />
     <ClInclude Include="..\..\Include\SJMHttpBundle\SJMHttpResponseStatus.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="..\..\Include\SJMHttpBundle\SJMJsonResponseHandler.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SJMCommandlineTextProgressBar.cpp" />
     <ClCompile Include="SJMDownloadManager.cpp" />
     <ClCompile Include="SJMHttpResponseStatus.cpp" />
     <ClCompile Include="SJMJHttpRestCommunication.cpp" />

@@ -2,8 +2,9 @@
 
 #include "ISJMDownloadManager.h"
 #include "ISJMProgressBar.h"
-
-class SJMDownloadManager : public ISJMDownloadManager , public QObject
+#include "SJMHttpBundleCommonDef.h"
+#include <QObject>
+class DLL_SJMHTTPBUNDLE SJMDownloadManager : public ISJMDownloadManager , public QObject
 {
 	Q_OBJECT
 public:
