@@ -1,7 +1,8 @@
 #pragma once
 #include "ISJMProgressBar.h"
+#include "SJMHttpBundleCommonDef.h"
 
-class SJMCommandlineTextProgressBar : public ISJMProgressBar
+class DLL_SJMHTTPBUNDLE SJMCommandlineTextProgressBar : public ISJMProgressBar
 {
 public:
 	void clear() override;

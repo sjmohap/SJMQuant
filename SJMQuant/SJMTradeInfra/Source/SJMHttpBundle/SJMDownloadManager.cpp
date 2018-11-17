@@ -94,11 +94,11 @@ void SJMDownloadManager::downloadFile(const QUrl& url)
 	const QNetworkRequest request(url);
 	currentDownload = manager.get(request);
 
-	QObject::connect(currentDownload, SIGNAL(downloadProgress(qint64, qint64)),
+	connect(currentDownload, SIGNAL(downloadProgress(qint64, qint64)),
 	                 SLOT(downloadProgress(qint64, qint64)));
-	QObject::connect(currentDownload, SIGNAL(finished()),
+	connect(currentDownload, SIGNAL(finished()),
 	                 SLOT(downloadFinished()));
-	QObject::connect(currentDownload, SIGNAL(readyRead()),
+	connect(currentDownload, SIGNAL(readyRead()),
 	                 SLOT(downloadReadyRead()));
 
 	// prepare the output

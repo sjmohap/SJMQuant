@@ -3,8 +3,8 @@
 #include "ISJMDownloadManager.h"
 #include "ISJMProgressBar.h"
 #include "SJMHttpBundleCommonDef.h"
-#include <QObject>
-class DLL_SJMHTTPBUNDLE SJMDownloadManager : public ISJMDownloadManager , public QObject
+
+class DLL_SJMHTTPBUNDLE SJMDownloadManager : public QObject ,public ISJMDownloadManager/*, public QObject*/
 {
 	Q_OBJECT
 public:
@@ -24,8 +24,7 @@ private:
 	void appendDownloadLink(const QString& urls);
 	void downloadFile(const QUrl& url);
 
-public:
-	signals:
+signals:
 	void finished();
 	void fileWritten();
 

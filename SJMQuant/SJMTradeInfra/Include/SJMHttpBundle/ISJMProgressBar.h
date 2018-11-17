@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include <QString>
+#include "SJMHttpBundleCommonDef.h"
 
-class ISJMProgressBar
+class DLL_SJMHTTPBUNDLE ISJMProgressBar
 {
 public:
 	virtual void clear() = 0;

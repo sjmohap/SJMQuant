@@ -3,6 +3,7 @@
 #include <QtNetwork>
 #include <QtCore>
 
+
 class ISJMDownloadManager
 {
 protected:
@@ -13,14 +14,3 @@ protected:
 	virtual void appendDownloadLinks(const QStringList &urls) = 0;
 };
 
-class sjmDownloadManager : public ISJMDownloadManager
-{
-protected:
-	~sjmDownloadManager() override;
-	bool doesFileExist(const QString& fileURL) override;
-	QString getSaveFileName(const QString& url) const override;
-	QString downloadAndGetFilePath(const QString& fileURL) override;
-	void appendDownloadLinks(const QStringList& urls) override;
-public:
-
-};
