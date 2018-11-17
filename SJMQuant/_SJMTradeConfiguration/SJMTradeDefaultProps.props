@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+  </ImportGroup>
+  
+  <PropertyGroup Label="UserMacros">
+    <SJMTradeBin>..\..\..\</SJMTradeBin>
+    <SJMThirdPartyDir>..\..\..\ThirdParty\x64-windows</SJMThirdPartyDir>
+    <SJMTradeBrokerServicesInclude>..\..\..\SJMTradeBrokerServices\Include</SJMTradeBrokerServicesInclude>
+    <SJMTradeCommonInclude>..\..\..\SJMTradeCommon\Include</SJMTradeCommonInclude>
+    <SJMTradeEngineInclude>..\..\..\SJMTradeEngine\Include</SJMTradeEngineInclude>
+    <SJMTradeInfraInclude>..\..\..\SJMTradeInfra\Include</SJMTradeInfraInclude>
+    <SJMTradePortfolioInclude>..\..\..\SJMTradePortfolio\include</SJMTradePortfolioInclude>
+    <SJMTradeStrategyInclude>..\..\..\SJMTradeStrategy\Include</SJMTradeStrategyInclude>
+    <SJMTradeUIInclude>..\..\..\SJMTradeUI\Include</SJMTradeUIInclude>
+    <QTDIR>C:\Qt\Qt5.11.1\5.11.1\msvc2017_64</QTDIR>
+
+    <SJMTradeIncludes>$(WindowsSDK_IncludePath);$(VC_IncludePath)$;(SJMTradeInfraInclude);</SJMTradeIncludes>
+    <SJMTradeDebuggerWorkingDir Condition="'$(Platform)'!='x64'">$(SJMTradeBin)bin\x86\$(Configuration)</SJMTradeDebuggerWorkingDir>
+    <SJMTradeDebuggerWorkingDir Condition="'$(Platform)'=='x64'">$(SJMTradeBin)bin\$(Platform)\$(Configuration)</SJMTradeDebuggerWorkingDir>	
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.60610.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Platform)'!='x64'">$(SJMTradeBin)bin\x86\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Platform)'!='x64'">$(SJMTradeBin)bin\x86\$(Configuration)\$(ProjectName)\</IntDir>
+	  <OutDir Condition="'$(Platform)'=='x64'">$(SJMTradeBin)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Platform)'=='x64'">$(SJMTradeBin)bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SJMTradeIncludes)</IncludePath>
+    <LibraryPath Condition="'$(Platform)'!='x64'">$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(OutDir);</LibraryPath>
+	  <LibraryPath Condition="'$(Platform)'=='x64'">$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(OutDir);</LibraryPath>
+    <LocalDebuggerWorkingDirectory>$(SJMTradeDebuggerWorkingDir)</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SJMTradeIncludes);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <WarningLevel>Level4</WarningLevel>
+      <EnablePREfast>false</EnablePREfast>
+      <UseFullPaths>true</UseFullPaths>
+      <DisableSpecificWarnings>4995</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories Condition="'$(Platform)'!='x64'">$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+	    <AdditionalLibraryDirectories Condition="'$(Platform)'=='x64'">$(SJMThirdPartyDir)\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalLibraryDirectories Condition="'$(Platform)'!='x64'">$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+	    <AdditionalLibraryDirectories Condition="'$(Platform)'=='x64'">$(SJMThirdPartyDir)\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+    </Link>
+    <Midl>
+      <AdditionalIncludeDirectories>$(SJMTradeIncludes);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </Midl>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(SJMTradeIncludes);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="SJMTradeBin">
+      <Value>$(SJMTradeBin)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>    
+    <BuildMacro Include="SJMThirdPartyDir">
+      <Value>$(SJMThirdPartyDir)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="SJMTradeIncludes">
+      <Value>$(SJMTradeIncludes)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="SJMTradeDebuggerWorkingDir">
+      <Value>$(SJMTradeDebuggerWorkingDir)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="SJMTradeCommonInclude">
+      <Value>$(SJMTradeCommonInclude)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="SJMTradeEngineInclude">
+      <Value>$(SJMTradeEngineInclude)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="SJMTradeInfraInclude">
+      <Value>$(SJMTradeInfraInclude)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="SJMTradePortfolioInclude">
+      <Value>$(SJMTradePortfolioInclude)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="SJMTradeStrategyInclude">
+      <Value>$(SJMTradeStrategyInclude)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="SJMTradeUIInclude">
+      <Value>$(SJMTradeUIInclude)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="QTDIR">
+      <Value>$(QTDIR)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="SJMTradeBrokerServicesInclude">
+      <Value>$(SJMTradeBrokerServicesInclude)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
