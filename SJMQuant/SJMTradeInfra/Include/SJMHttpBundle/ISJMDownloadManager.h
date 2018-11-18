@@ -12,5 +12,6 @@ protected:
 	virtual QString getSaveFileName(const QString& url) const = 0;
 	virtual QString downloadAndGetFilePath(const QString& fileURL) = 0;
 	virtual void appendDownloadLinks(const QStringList &urls) = 0;
+	virtual void downloadFilesToFolder(const QStringList& urls, const QString& folderPath) = 0;
 };
 

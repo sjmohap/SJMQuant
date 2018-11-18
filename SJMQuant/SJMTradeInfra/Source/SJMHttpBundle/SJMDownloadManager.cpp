@@ -39,11 +39,28 @@ QString SJMDownloadManager::getSaveFileName(const QString& url) const
 QString SJMDownloadManager::downloadAndGetFilePath(const QString& fileURL)
 {
 	const auto url = getUrlFromString(fileURL);
+	++totalCount;
 	downloadFile(url);
+	
 	QEventLoop loop;
 	connect(this, SIGNAL(fileWritten()), &loop, SLOT(quit()));
 	loop.exec();
 	return lastSavedFileName;
+}
+
+QString SJMDownloadManager::getSaveFileName(const QUrl& url) const
+{
+	const auto path = url.path();
+	return getSaveFileName(path);
+}
+
+QUrl SJMDownloadManager::getUrlFromString(const QString& url)
+{
+	return QUrl::fromEncoded(url.toLocal8Bit());
+}
+
+void SJMDownloadManager::downloadFilesToFolder(const QStringList & urls, const QString & folderPath)
+{
 }
 
 void SJMDownloadManager::appendDownloadLinks(const QStringList& urls)
@@ -55,23 +72,14 @@ void SJMDownloadManager::appendDownloadLinks(const QStringList& urls)
 		QTimer::singleShot(0, this, SIGNAL(finished()));
 }
 
-QString SJMDownloadManager::getSaveFileName(const QUrl& url) const
-{
-	const auto path = url.path();
-	return getSaveFileName(path);
-}
-
-QUrl SJMDownloadManager::getUrlFromString(const QString& url)
-{
-	return QUrl::fromEncoded(url.toLocal8Bit()).path();
-}
-
 void SJMDownloadManager::appendDownloadLink(const QString& urlStr)
 {
 	const QUrl downloadURL = getUrlFromString(urlStr);
 
 	if (downloadQueue.isEmpty())
+	{
 		QTimer::singleShot(0, this, SLOT(startNextDownload()));
+	}
 
 	downloadQueue.enqueue(downloadURL);
 	++totalCount;
@@ -161,7 +169,7 @@ void SJMDownloadManager::downloadFinished()
 			output.remove();
 		}
 		else {
-			printf("Succeeded.\n");
+			printf("Download Succeeded.\n");
 			++downloadedCount;
 		}
 	}
