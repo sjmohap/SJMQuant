@@ -147,12 +147,13 @@
     <ClInclude Include="..\..\Include\SJMHttpBundle\SJMHttpResponseStatus.h" />
     <ClInclude Include="..\..\Include\SJMHttpBundle\SJMJHttpRestCommunication.h" />
     <ClInclude Include="..\..\Include\SJMHttpBundle\SJMJsonResponseHandler.h" />
-    <QtMoc Include="..\..\Include\SJMHttpBundle\SJMDownloadManager.h">
-    </QtMoc>
+    <QtMoc Include="..\..\Include\SJMHttpBundle\SJMDownloadManager.h"></QtMoc>
+    <QtMoc Include="..\..\Include\SJMHttpBundle\SJMDownloadTask.h"></QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SJMCommandlineTextProgressBar.cpp" />
     <ClCompile Include="SJMDownloadManager.cpp" />
+    <ClCompile Include="SJMDownloadTask.cpp" />
     <ClCompile Include="SJMHttpResponseStatus.cpp" />
     <ClCompile Include="SJMJHttpRestCommunication.cpp" />
     <ClCompile Include="SJMJsonResponseHandler.cpp" />

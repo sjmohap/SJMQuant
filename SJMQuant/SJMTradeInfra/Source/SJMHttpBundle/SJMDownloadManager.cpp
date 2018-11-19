@@ -3,6 +3,7 @@
 #include <QtNetwork>
 #include <QtCore>
 #include <QObject>
+#include <QThreadPool>
 #include "SJMHttpBundle/SJMDownloadManager.h"
 
 SJMDownloadManager::SJMDownloadManager(QNetworkAccessManager& manager, ISJMProgressBar& progress_bar)
@@ -40,7 +41,7 @@ QString SJMDownloadManager::downloadAndGetFilePath(const QString& fileURL)
 {
 	const auto url = getUrlFromString(fileURL);
 	++totalCount;
-	downloadFile(url);
+	downloadFile(url, getSaveFileName(url));
 	
 	QEventLoop loop;
 	connect(this, SIGNAL(fileWritten()), &loop, SLOT(quit()));
@@ -50,8 +51,7 @@ QString SJMDownloadManager::downloadAndGetFilePath(const QString& fileURL)
 
 QString SJMDownloadManager::getSaveFileName(const QUrl& url) const
 {
-	const auto path = url.path();
-	return getSaveFileName(path);
+	return getSaveFileName(url.path());
 }
 
 QUrl SJMDownloadManager::getUrlFromString(const QString& url)
@@ -61,6 +61,8 @@ QUrl SJMDownloadManager::getUrlFromString(const QString& url)
 
 void SJMDownloadManager::downloadFilesToFolder(const QStringList & urls, const QString & folderPath)
 {
+	QThreadPool *pool = new QThreadPool(this);
+	pool->setMaxThreadCount(4);
 }
 
 void SJMDownloadManager::appendDownloadLinks(const QStringList& urls)
@@ -71,6 +73,8 @@ void SJMDownloadManager::appendDownloadLinks(const QStringList& urls)
 	if (downloadQueue.isEmpty())
 		QTimer::singleShot(0, this, SIGNAL(finished()));
 }
+
+
 
 void SJMDownloadManager::appendDownloadLink(const QString& urlStr)
 {
@@ -85,9 +89,8 @@ void SJMDownloadManager::appendDownloadLink(const QString& urlStr)
 	++totalCount;
 }
 
-void SJMDownloadManager::downloadFile(const QUrl& url)
-{
-	QString saveFileName = getSaveFileName(url);
+void SJMDownloadManager::downloadFile(const QUrl& url, const QString& saveFileName)
+{	
 	output.setFileName(saveFileName);
 
 	if (!output.open(QIODevice::WriteOnly)) {
@@ -114,6 +117,11 @@ void SJMDownloadManager::downloadFile(const QUrl& url)
 	downloadTime.start();
 }
 
+void SJMDownloadManager::FileDownloadTask::run()
+{
+
+}
+
 void SJMDownloadManager::startNextDownload()
 {
 	if (downloadQueue.isEmpty()) {
@@ -123,7 +131,7 @@ void SJMDownloadManager::startNextDownload()
 	}
 
 	QUrl url = downloadQueue.dequeue();
-	downloadFile(url);
+	downloadFile(url, getSaveFileName(url));
 }
 
 void SJMDownloadManager::downloadProgress(qint64 bytesReceived, qint64 bytesTotal) const

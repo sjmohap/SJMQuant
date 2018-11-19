@@ -36,6 +36,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtConsoleApplication1", "Te
 		{6F004969-4C73-4CD7-BC13-239ADD95A02B} = {6F004969-4C73-4CD7-BC13-239ADD95A02B}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "download", "C:\Qt\Qt5.11.1\Examples\Qt-5.11.1\network\download\download.vcxproj", "{806115B2-BB7D-3D8F-AE93-7D6CC590AF9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -114,6 +116,12 @@ Global
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x64.ActiveCfg = Release|x64
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x64.Build.0 = Release|x64
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x86.ActiveCfg = Release|x64
+		{806115B2-BB7D-3D8F-AE93-7D6CC590AF9F}.Debug|x64.ActiveCfg = Debug|x64
+		{806115B2-BB7D-3D8F-AE93-7D6CC590AF9F}.Debug|x64.Build.0 = Debug|x64
+		{806115B2-BB7D-3D8F-AE93-7D6CC590AF9F}.Debug|x86.ActiveCfg = Debug|x64
+		{806115B2-BB7D-3D8F-AE93-7D6CC590AF9F}.Release|x64.ActiveCfg = Release|x64
+		{806115B2-BB7D-3D8F-AE93-7D6CC590AF9F}.Release|x64.Build.0 = Release|x64
+		{806115B2-BB7D-3D8F-AE93-7D6CC590AF9F}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

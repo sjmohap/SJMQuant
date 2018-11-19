@@ -42,10 +42,10 @@
     <ClInclude Include="..\..\Include\SJMHttpBundle\ISJMDownloadManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Include\SJMHttpBundle\SJMDownloadManager.h">
+    <ClInclude Include="..\..\Include\SJMHttpBundle\SJMCommandlineTextProgressBar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Include\SJMHttpBundle\SJMCommandlineTextProgressBar.h">
+    <ClInclude Include="..\..\Include\SJMHttpBundle\SJMDownloadTask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -65,8 +65,20 @@
     <ClCompile Include="SJMCommandlineTextProgressBar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SJMDownloadTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt" />
+    <CustomBuild Include="release\moc_predefs.h.cbt" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="..\..\Include\SJMHttpBundle\SJMDownloadManager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

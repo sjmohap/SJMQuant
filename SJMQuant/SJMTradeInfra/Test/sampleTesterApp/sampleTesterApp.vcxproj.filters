@@ -27,4 +27,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt" />
+    <CustomBuild Include="release\moc_predefs.h.cbt" />
+  </ItemGroup>
 </Project>

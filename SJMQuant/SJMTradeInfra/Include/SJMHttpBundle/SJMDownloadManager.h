@@ -14,15 +14,21 @@ public:
 	static QUrl getUrlFromString(const QString& url);
 	bool doesFileExist(const QString& fileURL) override;
 	QString getSaveFileName(const QString& url) const override;
+
 	QString downloadAndGetFilePath(const QString& fileURL) override;
-	
-	void downloadFilesToFolder(const QStringList& urls, const QString& folderPath) override;
+	void downloadFilesToFolder(const QStringList& urls, const QString& folderPath) override;	
 	void appendDownloadLinks(const QStringList& urls) override;
 
 private:
 	void appendDownloadLink(const QString& urls);
 	QString getSaveFileName(const QUrl& url) const;		
-	void downloadFile(const QUrl& url);
+	void downloadFile(const QUrl& url, const QString& saveFileName);
+
+public:
+	struct FileDownloadTask : QRunnable
+	{
+		virtual void run() override;
+	};
 
 signals:
 	void finished();
